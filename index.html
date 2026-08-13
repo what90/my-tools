@@ -1,227 +1,315 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Google Search Console Verification -->
-  <meta name="google-site-verification" content="QzVwtT0LUgufe06sv-DvTM1XZ1im3GqtAdAzMB0Nuv8" />
-  
-  <title>FastImgConvert - Free Online Image Converter & Compressor</title>
-  <meta name="description" content="Convert and compress PNG, JPG, WEBP images instantly in your browser. 100% free, private, and no server upload required.">
-  <script src="https://cdn.tailwindcss.com"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google Search Console Verification -->
+    <meta name="google-site-verification" content="QzVwtT0LUgufe06sv-DvTM1XZ1im3GqtAdAzMB0Nuv8" />
+    
+    <title>FastImgConvert - Free Online Image Converter & Compressor</title>
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1748605329200336" crossorigin="anonymous"></script>
+    <meta name="description" content="Convert and compress PNG, JPG, WEBP images instantly in your browser. 100% free, private, and no server upload required.">
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-slate-900 text-slate-100 min-h-screen flex flex-col justify-between font-sans">
 
-  <!-- Header -->
-  <header class="border-b border-slate-800 bg-slate-900/80 backdrop-blur sticky top-0 z-50">
-    <div class="max-w-5xl mx-auto px-4 py-4 flex justify-between items-center">
-      <div class="flex items-center space-x-2">
-        <span class="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-blue-500">FastImgConvert</span>
-      </div>
-      <div class="flex items-center space-x-4">
-        <!-- Language Selector -->
-        <select id="langSelect" class="bg-slate-800 text-slate-200 text-sm rounded-lg px-3 py-1.5 border border-slate-700 focus:outline-none focus:border-teal-500">
-          <option value="en">English</option>
-          <option value="ko">한국어</option>
-          <option value="ja">日本語</option>
-          <option value="es">Español</option>
-        </select>
-        <span class="text-xs bg-slate-800 text-teal-400 px-2.5 py-1 rounded-full border border-teal-500/20 font-medium hidden sm:inline" id="badgePrivacy">100% Free / Client-side</span>
-      </div>
-    </div>
-  </header>
-
-  <!-- Main Content -->
-  <main class="max-w-4xl mx-auto px-4 py-12 flex-1 flex flex-col justify-center w-full">
-    <div class="text-center mb-8">
-      <h1 class="text-3xl sm:text-5xl font-extrabold mb-4 text-white tracking-tight" id="mainTitle">Convert & Compress Images Instantly</h1>
-      <p class="text-slate-400 text-base sm:text-lg max-w-2xl mx-auto" id="subTitle">Convert PNG, JPG, WEBP formats directly in your browser without uploading to any server.</p>
-    </div>
-
-    <!-- Drop Zone -->
-    <div id="dropZone" class="border-2 border-dashed border-slate-700 hover:border-teal-500 bg-slate-800/50 rounded-2xl p-8 sm:p-12 text-center cursor-pointer transition-all duration-200 shadow-xl group mb-8">
-      <div class="flex flex-col items-center justify-center space-y-4">
-        <div class="p-4 bg-slate-800 rounded-full text-slate-400 group-hover:text-teal-400 group-hover:bg-slate-700 transition">
-          <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+    <!-- Header -->
+    <header class="border-b border-slate-800 bg-slate-900/80 backdrop-blur sticky top-0 z-50">
+        <div class="max-w-5xl mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <span class="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-blue-500">FastImgConvert</span>
+            </div>
+            <div class="flex items-center space-x-4">
+                <!-- Language Selector -->
+                <select id="langSelect" class="bg-slate-800 text-slate-200 text-sm rounded-lg px-3 py-1.5 border border-slate-700 focus:outline-none focus:border-teal-500">
+                    <option value="en">English</option>
+                    <option value="ko">한국어</option>
+                    <option value="ja">日本語</option>
+                    <option value="es">Español</option>
+                </select>
+                <span class="text-xs bg-slate-800 text-teal-400 px-2.5 py-1 rounded-full border border-teal-500/20 font-medium hidden sm:inline" id="badgePrivacy">100% Free / Client-side</span>
+            </div>
         </div>
-        <div>
-          <p class="text-lg font-semibold text-slate-200" id="dragText">Drag & Drop your image here or click to select</p>
-          <p class="text-sm text-slate-500 mt-1" id="supportText">Supported formats: JPG, PNG, WEBP</p>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-4xl mx-auto px-4 py-8 flex-grow w-full">
+        <!-- Hero Section -->
+        <div class="text-center mb-8">
+            <h1 class="text-3xl sm:text-4xl font-extrabold mb-3 text-slate-100" id="heroTitle">Fast, Secure Image Converter & Compressor</h1>
+            <p class="text-slate-400 text-sm sm:text-base max-w-xl mx-auto" id="heroDesc">Convert and resize your images directly in your browser. No files are uploaded to any server – 100% private and secure.</p>
         </div>
-      </div>
-      <input type="file" id="fileInput" accept="image/png, image/jpeg, image/webp" class="hidden">
-    </div>
 
-    <!-- Controls & Result Section (Hidden by default) -->
-    <div id="actionArea" class="hidden bg-slate-800/80 border border-slate-700 rounded-2xl p-6 shadow-xl space-y-6">
-      <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pb-6 border-b border-slate-700">
-        <div class="flex items-center space-x-4 w-full sm:w-auto">
-          <img id="previewImg" class="w-16 h-16 object-cover rounded-lg border border-slate-600 bg-slate-900" src="" alt="Preview">
-          <div class="overflow-hidden">
-            <p id="fileName" class="font-medium text-slate-200 truncate max-w-[200px] sm:max-w-[250px]">filename.png</p>
-            <p id="fileSize" class="text-xs text-slate-400 mt-0.5">0 KB</p>
-          </div>
+        <!-- Converter Card -->
+        <div class="bg-slate-800/50 border border-slate-700/60 rounded-2xl p-6 sm:p-8 backdrop-blur shadow-xl mb-12">
+            
+            <!-- Drop Zone -->
+            <div id="dropZone" class="border-2 border-dashed border-slate-600 hover:border-teal-400/80 rounded-xl p-8 text-center cursor-pointer transition-all duration-200 bg-slate-900/40 hover:bg-slate-900/80 group">
+                <input type="file" id="fileInput" accept="image/*" multiple class="hidden">
+                <div class="flex flex-col items-center justify-center space-y-3">
+                    <div class="w-12 h-12 rounded-full bg-slate-800 group-hover:bg-teal-500/10 flex items-center justify-center transition-colors">
+                        <svg class="w-6 h-6 text-teal-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
+                        </svg>
+                    </div>
+                    <div>
+                        <p class="text-slate-200 font-medium" id="dropText">Drag and drop images here, or <span class="text-teal-400 underline">browse</span></p>
+                        <p class="text-xs text-slate-400 mt-1" id="dropSub">Supports PNG, JPG, WEBP, GIF, BMP, AVIF</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Controls (Hidden initially) -->
+            <div id="controls" class="hidden mt-6 space-y-6">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 bg-slate-900/60 p-4 rounded-xl border border-slate-700/40">
+                    <!-- Format Options -->
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2" id="lblFormat">Target Format</label>
+                        <select id="formatSelect" class="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2 text-sm text-slate-200 focus:outline-none focus:border-teal-500">
+                            <option value="image/jpeg">JPG / JPEG</option>
+                            <option value="image/png">PNG</option>
+                            <option value="image/webp">WEBP</option>
+                        </select>
+                    </div>
+
+                    <!-- Quality Slider -->
+                    <div>
+                        <div class="flex justify-between items-center mb-2">
+                            <label class="text-xs font-semibold text-slate-300 uppercase tracking-wider" id="lblQuality">Quality</label>
+                            <span id="qualityVal" class="text-xs font-mono text-teal-400 font-bold">85%</span>
+                        </div>
+                        <input type="range" id="qualityInput" min="10" max="100" value="85" class="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-teal-400">
+                    </div>
+                </div>
+
+                <!-- Convert Button -->
+                <button id="convertBtn" class="w-full bg-gradient-to-r from-teal-500 to-blue-600 hover:from-teal-400 hover:to-blue-500 text-white font-bold py-3.5 px-6 rounded-xl shadow-lg transition-all transform active:scale-[0.99] flex items-center justify-center space-x-2">
+                    <span id="btnConvertText">Convert Images</span>
+                </button>
+            </div>
+
+            <!-- Results List -->
+            <div id="resultsList" class="mt-6 space-y-3"></div>
         </div>
-      </div>
 
-      <!-- Settings -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-        <div>
-          <label class="block text-sm font-medium text-slate-300 mb-2" id="labelFormat">Convert To</label>
-          <select id="formatSelect" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-slate-200 focus:outline-none focus:border-teal-500">
-            <option value="image/webp">WEBP (Highly Recommended)</option>
-            <option value="image/jpeg">JPG / JPEG</option>
-            <option value="image/png">PNG</option>
-          </select>
+        <!-- Features / SEO Text Section -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm text-slate-400">
+            <div class="bg-slate-800/30 p-5 rounded-xl border border-slate-800">
+                <h3 class="font-bold text-slate-200 mb-1" id="feat1Title">🔒 100% Private</h3>
+                <p id="feat1Desc">Processing happens locally in your browser. Your images never hit any server.</p>
+            </div>
+            <div class="bg-slate-800/30 p-5 rounded-xl border border-slate-800">
+                <h3 class="font-bold text-slate-200 mb-1" id="feat2Title">⚡ Ultra Fast</h3>
+                <p id="feat2Desc">Instant conversion powered by modern web standards. No waiting for uploads.</p>
+            </div>
+            <div class="bg-slate-800/30 p-5 rounded-xl border border-slate-800">
+                <h3 class="font-bold text-slate-200 mb-1" id="feat3Title">✨ Multiple Formats</h3>
+                <p id="feat3Desc">Easily convert between PNG, JPG, and WEBP with customizable compression levels.</p>
+            </div>
         </div>
-        <div>
-          <div class="flex justify-between mb-2">
-            <label class="text-sm font-medium text-slate-300" id="labelQuality">Image Quality</label>
-            <span id="qualityVal" class="text-sm text-teal-400 font-bold">85%</span>
-          </div>
-          <input type="range" id="qualityRange" min="0.1" max="1" step="0.05" value="0.85" class="w-full accent-teal-500 cursor-pointer">
-        </div>
-      </div>
+    </main>
 
-      <!-- Action Button -->
-      <button id="convertBtn" class="w-full bg-gradient-to-r from-teal-500 to-blue-600 hover:from-teal-400 hover:to-blue-500 text-white font-bold py-3.5 px-6 rounded-xl shadow-lg transition transform active:scale-[0.99] text-center">
-        Convert & Download Now
-      </button>
-    </div>
-  </main>
+    <!-- Footer -->
+    <footer class="border-t border-slate-800 bg-slate-900 py-6 text-center text-xs text-slate-400">
+        <p>© 2026 FastImgConvert. All rights reserved.</p>
+    </footer>
 
-  <!-- Footer -->
-  <footer class="border-t border-slate-800 py-6 text-center text-slate-500 text-xs">
-    <p>© 2026 FastImgConvert. All rights reserved. Processed safely inside your browser.</p>
-  </footer>
+    <!-- Multilingual Script & Processing Logic -->
+    <script>
+        const translations = {
+            en: {
+                heroTitle: "Fast, Secure Image Converter & Compressor",
+                heroDesc: "Convert and resize your images directly in your browser. No files are uploaded to any server – 100% private and secure.",
+                dropText: "Drag and drop images here, or ",
+                browse: "browse",
+                dropSub: "Supports PNG, JPG, WEBP, GIF, BMP, AVIF",
+                lblFormat: "Target Format",
+                lblQuality: "Quality",
+                btnConvertText: "Convert Images",
+                feat1Title: "🔒 100% Private",
+                feat1Desc: "Processing happens locally in your browser. Your images never hit any server.",
+                feat2Title: "⚡ Ultra Fast",
+                feat2Desc: "Instant conversion powered by modern web standards. No waiting for uploads.",
+                feat3Title: "✨ Multiple Formats",
+                feat3Desc: "Easily convert between PNG, JPG, and WEBP with customizable compression levels.",
+                download: "Download",
+                badgePrivacy: "100% Free / Client-side"
+            },
+            ko: {
+                heroTitle: "빠르고 안전한 이미지 변환 및 압축기",
+                heroDesc: "브라우저에서 직접 이미지를 변환하고 용량을 줄이세요. 서버로 파일이 전송되지 않아 100% 안전합니다.",
+                dropText: "이미지를 여기에 드래그하거나 ",
+                browse: "파일 선택",
+                dropSub: "PNG, JPG, WEBP, GIF, BMP, AVIF 지원",
+                lblFormat: "변환할 포맷",
+                lblQuality: "압축 품질",
+                btnConvertText: "이미지 변환하기",
+                feat1Title: "🔒 100% 개인정보 보호",
+                feat1Desc: "모든 작업이 브라우저 내부에서 진행됩니다. 이미지가 서버로 업로드되지 않습니다.",
+                feat2Title: "⚡ 초고속 처리",
+                feat2Desc: "최신 웹 기술을 사용해 업로드 대기 시간 없이 즉시 변환됩니다.",
+                feat3Title: "✨ 다양한 포맷 지원",
+                feat3Desc: "PNG, JPG, WEBP 간 자유로운 변환과 품질 조절을 지원합니다.",
+                download: "다운로드",
+                badgePrivacy: "100% 무료 / 기기 내 직접 처리"
+            },
+            ja: {
+                heroTitle: "高速で safe な画像変換・圧縮ツール",
+                heroDesc: "ブラウザ上で直接画像を変換・圧縮します。サーバーにファイルが送信されないため100% safeです。",
+                dropText: "画像をここにドラッグ＆ドロップ、または ",
+                browse: "ファイルを選択",
+                dropSub: "PNG, JPG, WEBP, GIF, BMP, AVIF に対応",
+                lblFormat: "変換フォーマット",
+                lblQuality: "画質",
+                btnConvertText: "画像を変換する",
+                feat1Title: "🔒 100% プライベート",
+                feat1Desc: "すべての処理はブラウザ内で行われます。画像がサーバーに送信されることはありません。",
+                feat2Title: "⚡ 超高速処理",
+                feat2Desc: "ウェブ標準技術により、アップロード時間なしで瞬時に変換されます。",
+                feat3Title: "✨ 多様なフォーマット",
+                feat3Desc: "PNG、JPG、WEBP間の相互変換と compress レベルの設定が可能です。",
+                download: "ダウンロード",
+                badgePrivacy: "100% 無料 / クライアント side 処理"
+            },
+            es: {
+                heroTitle: "Convertidor y Compresor de Imágenes Rápido y Seguro",
+                heroDesc: "Convierte y redimensiona tus imágenes directamente en tu navegador. 100% privado y seguro.",
+                dropText: "Arrastra y suelta imágenes aquí, o ",
+                browse: "buscar",
+                dropSub: "Soporta PNG, JPG, WEBP, GIF, BMP, AVIF",
+                lblFormat: "Formato de Destino",
+                lblQuality: "Calidad",
+                btnConvertText: "Convertir Imágenes",
+                feat1Title: "🔒 100% Privado",
+                feat1Desc: "El procesamiento es local en tu navegador. Tus imágenes nunca se suben a ningún servidor.",
+                feat2Title: "⚡ Ultra Rápido",
+                feat2Desc: "Conversión instantánea sin tiempos de espera de carga.",
+                feat3Title: "✨ Múltiples Formatos",
+                feat3Desc: "Convierte fácilmente entre PNG, JPG y WEBP con calidad personalizable.",
+                download: "Descargar",
+                badgePrivacy: "100% Gratis / Procesamiento Local"
+            }
+        };
 
-  <script>
-    const i18n = {
-      en: {
-        badge: "100% Free / Client-side",
-        mainTitle: "Convert & Compress Images Instantly",
-        subTitle: "Convert PNG, JPG, WEBP formats directly in your browser without uploading to any server.",
-        dragText: "Drag & Drop your image here or click to select",
-        supportText: "Supported formats: JPG, PNG, WEBP",
-        labelFormat: "Convert To",
-        labelQuality: "Image Quality",
-        btnConvert: "Convert & Download Now"
-      },
-      ko: {
-        badge: "100% 무료 / 서버 전송 없음",
-        mainTitle: "이미지 포맷 변환 & 용량 압축",
-        subTitle: "PNG, JPG, WEBP 파일을 서버 업로드 없이 브라우저에서 즉시 변환하세요.",
-        dragText: "이미지 파일을 이곳에 드래그하거나 클릭하여 선택하세요",
-        supportText: "지원 형식: JPG, PNG, WEBP",
-        labelFormat: "변환할 포맷",
-        labelQuality: "압축 품질",
-        btnConvert: "지금 변환하고 다운로드"
-      },
-      ja: {
-        badge: "100% 無料 / サーバー送信なし",
-        mainTitle: "画像を瞬時に変換＆圧縮",
-        subTitle: "サーバーにアップロードせず、ブラウザ上でPNG、JPG、WEBPを即座に変換します。",
-        dragText: "ここに画像をドラッグ＆ドロップするか、クリックして選択",
-        supportText: "対応フォーマット: JPG, PNG, WEBP",
-        labelFormat: "変換フォーマット",
-        labelQuality: "画質設定",
-        btnConvert: "今すぐ変換してダウンロード"
-      },
-      es: {
-        badge: "100% Gratis / Sin servidor",
-        mainTitle: "Convierte y comprime imágenes al instante",
-        subTitle: "Convierte formatos PNG, JPG, WEBP directamente en tu navegador sin subir nada al servidor.",
-        dragText: "Arrastra y suelta tu imagen aquí o haz clic para seleccionar",
-        supportText: "Formatos compatibles: JPG, PNG, WEBP",
-        labelFormat: "Convertir a",
-        labelQuality: "Calidad de imagen",
-        btnConvert: "Convertir y descargar ahora"
-      }
-    };
+        let loadedFiles = [];
+        const dropZone = document.getElementById('dropZone');
+        const fileInput = document.getElementById('fileInput');
+        const controls = document.getElementById('controls');
+        const convertBtn = document.getElementById('convertBtn');
+        const resultsList = document.getElementById('resultsList');
+        const langSelect = document.getElementById('langSelect');
+        const qualityInput = document.getElementById('qualityInput');
+        const qualityVal = document.getElementById('qualityVal');
 
-    let currentFile = null;
-    const dropZone = document.getElementById('dropZone');
-    const fileInput = document.getElementById('fileInput');
-    const actionArea = document.getElementById('actionArea');
-    const previewImg = document.getElementById('previewImg');
-    const fileName = document.getElementById('fileName');
-    const fileSize = document.getElementById('fileSize');
-    const qualityRange = document.getElementById('qualityRange');
-    const qualityVal = document.getElementById('qualityVal');
-    const formatSelect = document.getElementById('formatSelect');
-    const convertBtn = document.getElementById('convertBtn');
-    const langSelect = document.getElementById('langSelect');
+        // Quality Display Update
+        qualityInput.addEventListener('input', (e) => {
+            qualityVal.textContent = e.target.value + '%';
+        });
 
-    langSelect.addEventListener('change', (e) => {
-      const lang = e.target.value;
-      document.getElementById('badgePrivacy').innerText = i18n[lang].badge;
-      document.getElementById('mainTitle').innerText = i18n[lang].mainTitle;
-      document.getElementById('subTitle').innerText = i18n[lang].subTitle;
-      document.getElementById('dragText').innerText = i18n[lang].dragText;
-      document.getElementById('supportText').innerText = i18n[lang].supportText;
-      document.getElementById('labelFormat').innerText = i18n[lang].labelFormat;
-      document.getElementById('labelQuality').innerText = i18n[lang].labelQuality;
-      convertBtn.innerText = i18n[lang].btnConvert;
-    });
+        // Language Switcher
+        langSelect.addEventListener('change', (e) => {
+            const lang = e.target.value;
+            const t = translations[lang];
+            
+            document.getElementById('heroTitle').textContent = t.heroTitle;
+            document.getElementById('heroDesc').textContent = t.heroDesc;
+            document.getElementById('dropText').childNodes[0].nodeValue = t.dropText;
+            document.getElementById('dropText').querySelector('span').textContent = t.browse;
+            document.getElementById('dropSub').textContent = t.dropSub;
+            document.getElementById('lblFormat').textContent = t.lblFormat;
+            document.getElementById('lblQuality').textContent = t.lblQuality;
+            document.getElementById('btnConvertText').textContent = t.btnConvertText;
+            document.getElementById('feat1Title').textContent = t.feat1Title;
+            document.getElementById('feat1Desc').textContent = t.feat1Desc;
+            document.getElementById('feat2Title').textContent = t.feat2Title;
+            document.getElementById('feat2Desc').textContent = t.feat2Desc;
+            document.getElementById('feat3Title').textContent = t.feat3Title;
+            document.getElementById('feat3Desc').textContent = t.feat3Desc;
+            document.getElementById('badgePrivacy').textContent = t.badgePrivacy;
+        });
 
-    dropZone.addEventListener('click', () => fileInput.click());
-    dropZone.addEventListener('dragover', (e) => { e.preventDefault(); dropZone.classList.add('border-teal-500'); });
-    dropZone.addEventListener('dragleave', () => dropZone.classList.remove('border-teal-500'));
-    dropZone.addEventListener('drop', (e) => {
-      e.preventDefault();
-      dropZone.classList.remove('border-teal-500');
-      if (e.dataTransfer.files.length) handleFile(e.dataTransfer.files[0]);
-    });
+        // Drag & Drop Handlers
+        dropZone.addEventListener('click', () => fileInput.click());
+        dropZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dropZone.classList.add('border-teal-400', 'bg-slate-900/80');
+        });
+        dropZone.addEventListener('dragleave', () => {
+            dropZone.classList.remove('border-teal-400', 'bg-slate-900/80');
+        });
+        dropZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropZone.classList.remove('border-teal-400', 'bg-slate-900/80');
+            handleFiles(e.dataTransfer.files);
+        });
+        fileInput.addEventListener('change', (e) => handleFiles(e.target.files));
 
-    fileInput.addEventListener('change', (e) => {
-      if (e.target.files.length) handleFile(e.target.files[0]);
-    });
+        function handleFiles(files) {
+            if (files.length > 0) {
+                loadedFiles = Array.from(files);
+                controls.classList.remove('hidden');
+                resultsList.innerHTML = '';
+            }
+        }
 
-    qualityRange.addEventListener('input', (e) => {
-      qualityVal.innerText = `${Math.round(e.target.value * 100)}%`;
-    });
+        // Conversion Engine
+        convertBtn.addEventListener('click', async () => {
+            resultsList.innerHTML = '';
+            const targetFormat = document.getElementById('formatSelect').value;
+            const quality = parseFloat(qualityInput.value) / 100;
+            const currentLang = langSelect.value;
+            const downloadText = translations[currentLang].download;
 
-    function handleFile(file) {
-      if (!file.type.startsWith('image/')) return;
-      currentFile = file;
-      fileName.innerText = file.name;
-      fileSize.innerText = (file.size / 1024).toFixed(1) + ' KB';
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        previewImg.src = e.target.result;
-        actionArea.classList.remove('hidden');
-      };
-      reader.readAsDataURL(file);
-    }
+            for (let file of loadedFiles) {
+                const img = new Image();
+                img.src = URL.createObjectURL(file);
+                
+                await new Promise((resolve) => {
+                    img.onload = () => {
+                        const canvas = document.createElement('canvas');
+                        canvas.width = img.width;
+                        canvas.height = img.height;
+                        const ctx = canvas.getContext('2d');
+                        
+                        // Fill white background for non-transparent formats
+                        if (targetFormat === 'image/jpeg') {
+                            ctx.fillStyle = '#FFFFFF';
+                            ctx.fillRect(0, 0, canvas.width, canvas.height);
+                        }
+                        
+                        ctx.drawImage(img, 0, 0);
 
-    convertBtn.addEventListener('click', () => {
-      if (!currentFile) return;
-      const img = new Image();
-      img.src = previewImg.src;
-      img.onload = () => {
-        const canvas = document.createElement('canvas');
-        canvas.width = img.width;
-        canvas.height = img.height;
-        const ctx = canvas.getContext('2d');
-        ctx.drawImage(img, 0, 0);
+                        canvas.toBlob((blob) => {
+                            const originalSize = (file.size / 1024).toFixed(1);
+                            const convertedSize = (blob.size / 1024).toFixed(1);
+                            const ext = targetFormat.split('/')[1];
+                            const newFilename = file.name.substring(0, file.name.lastIndexOf('.')) + '.' + ext;
+                            const downloadUrl = URL.createObjectURL(blob);
 
-        const mimeType = formatSelect.value;
-        const quality = parseFloat(qualityRange.value);
-
-        canvas.toBlob((blob) => {
-          const url = URL.createObjectURL(blob);
-          const a = document.createElement('a');
-          a.href = url;
-          const ext = mimeType.split('/')[1];
-          const nameWithoutExt = currentFile.name.substring(0, currentFile.name.lastIndexOf('.')) || currentFile.name;
-          a.download = `${nameWithoutExt}_converted.${ext}`;
-          document.body.appendChild(a);
-          a.click();
-          document.body.removeChild(a);
-          URL.revokeObjectURL(url);
-        }, mimeType, quality);
-      };
-    });
-  </script>
+                            const item = document.createElement('div');
+                            item.className = 'bg-slate-800/80 border border-slate-700/80 rounded-xl p-4 flex flex-col sm:flex-row items-center justify-between gap-4';
+                            item.innerHTML = `
+                                <div class="flex items-center space-x-3 w-full sm:w-auto overflow-hidden">
+                                    <div class="w-10 h-10 bg-slate-700 rounded-lg flex items-center justify-center font-bold text-xs uppercase text-teal-400 flex-shrink-0">
+                                        ${ext}
+                                    </div>
+                                    <div class="truncate">
+                                        <p class="text-sm font-medium text-slate-200 truncate">${newFilename}</p>
+                                        <p class="text-xs text-slate-400">${originalSize} KB → <span class="text-teal-400 font-bold">${convertedSize} KB</span></p>
+                                    </div>
+                                </div>
+                                <a href="${downloadUrl}" download="${newFilename}" class="w-full sm:w-auto bg-slate-700 hover:bg-teal-600 text-white text-xs font-bold py-2.5 px-4 rounded-lg text-center transition-colors">
+                                    ${downloadText}
+                                </a>
+                            `;
+                            resultsList.appendChild(item);
+                            resolve();
+                        }, targetFormat, quality);
+                    };
+                });
+            }
+        });
+    </script>
 </body>
 </html>
