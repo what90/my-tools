@@ -1,328 +1,205 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Google Search Console Verification -->
-    <meta name="google-site-verification" content="QzVwtT0LUgufe06sv-DvTM1XZ1im3GqtAdAzMB0Nuv8" />
+    <title>FastImgConvert - Free Online Image Converter & Compressor</title>
     
-    <!-- Multilingual SEO (hreflang) -->
-    <link rel="alternate" hreflang="ko" href="https://my-tools-delta-ten.vercel.app/" />
-    <link rel="alternate" hreflang="en" href="https://my-tools-delta-ten.vercel.app/" />
-    <link rel="alternate" hreflang="ja" href="https://my-tools-delta-ten.vercel.app/" />
-    <link rel="alternate" hreflang="es" href="https://my-tools-delta-ten.vercel.app/" />
-    <link rel="alternate" hreflang="x-default" href="https://my-tools-delta-ten.vercel.app/" />
-<!-- 구글 검색 최적화용 메타 태그 (SEO) -->
+    <!-- SEO 및 검색 최적화 메타 태그 -->
     <meta name="description" content="Fast, free, and secure online image converter. Convert PNG, JPG, WEBP, GIF, BMP, AVIF directly in your browser. No server upload required.">
     <meta name="keywords" content="image converter, free image converter, convert png to jpg, webp converter, fast image compressor">
     <meta property="og:title" content="FastImgConvert - Best Free Online Image Converter">
     <meta property="og:description" content="Convert your images instantly in your browser. Fast, secure, and 100% free.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://my-tools-delta-ten.vercel.app/">
-    <title>FastImgConvert - Free Online Image Converter & Compressor</title>
+
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1748605329200336" crossorigin="anonymous"></script>
-    <meta name="description" content="Convert and compress PNG, JPG, WEBP images instantly in your browser. 100% free, private, and no server upload required.">
+    
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-slate-900 text-slate-100 min-h-screen flex flex-col justify-between font-sans">
 
     <!-- Header -->
-    <header class="border-b border-slate-800 bg-slate-900/80 backdrop-blur sticky top-0 z-50">
-        <div class="max-w-5xl mx-auto px-4 py-4 flex justify-between items-center">
-            <div class="flex items-center space-x-2">
-                <span class="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-blue-500">FastImgConvert</span>
-            </div>
-            <div class="flex items-center space-x-4">
-                <!-- Language Selector -->
-                <select id="langSelect" class="bg-slate-800 text-slate-200 text-sm rounded-lg px-3 py-1.5 border border-slate-700 focus:outline-none focus:border-teal-500">
+    <header class="bg-slate-800 border-b border-slate-700 py-4 shadow-md">
+        <div class="container mx-auto px-4 flex justify-between items-center max-w-4xl">
+            <h1 class="text-xl font-bold text-indigo-400">FastImgConvert</h1>
+            <div class="flex items-center gap-4">
+                <select id="lang-select" onchange="changeLanguage(this.value)" class="bg-slate-700 text-white text-sm px-3 py-1.5 rounded-lg border border-slate-600 focus:outline-none focus:ring-2 focus:ring-indigo-500">
                     <option value="en">English</option>
                     <option value="ko">한국어</option>
                     <option value="ja">日本語</option>
                     <option value="es">Español</option>
                 </select>
-                <span class="text-xs bg-slate-800 text-teal-400 px-2.5 py-1 rounded-full border border-teal-500/20 font-medium hidden sm:inline" id="badgePrivacy">100% Free / Client-side</span>
+                <span class="text-xs bg-indigo-900 text-indigo-200 px-2.5 py-1 rounded-full font-medium">100% Free / Client-side</span>
             </div>
         </div>
     </header>
 
-    <!-- Main Content -->
-    <main class="max-w-4xl mx-auto px-4 py-8 flex-grow w-full">
+    <!-- Main Container -->
+    <main class="container mx-auto px-4 py-8 max-w-4xl flex-grow">
+        
         <!-- Hero Section -->
         <div class="text-center mb-8">
-            <h1 class="text-3xl sm:text-4xl font-extrabold mb-3 text-slate-100" id="heroTitle">Fast, Secure Image Converter & Compressor</h1>
-            <p class="text-slate-400 text-sm sm:text-base max-w-xl mx-auto" id="heroDesc">Convert and resize your images directly in your browser. No files are uploaded to any server – 100% private and secure.</p>
+            <h2 id="hero-heading" class="text-2xl md:text-3xl font-extrabold mb-2">Fast, Secure Image Converter & Compressor</h2>
+            <p id="hero-desc" class="text-slate-400 text-sm md:text-base">Convert and resize your images directly in your browser. No files are uploaded to any server — 100% private and secure.</p>
         </div>
 
-        <!-- Converter Card -->
-        <div class="bg-slate-800/50 border border-slate-700/60 rounded-2xl p-6 sm:p-8 backdrop-blur shadow-xl mb-12">
-            
-            <!-- Drop Zone -->
-            <div id="dropZone" class="border-2 border-dashed border-slate-600 hover:border-teal-400/80 rounded-xl p-8 text-center cursor-pointer transition-all duration-200 bg-slate-900/40 hover:bg-slate-900/80 group">
-                <input type="file" id="fileInput" accept="image/*" multiple class="hidden">
-                <div class="flex flex-col items-center justify-center space-y-3">
-                    <div class="w-12 h-12 rounded-full bg-slate-800 group-hover:bg-teal-500/10 flex items-center justify-center transition-colors">
-                        <svg class="w-6 h-6 text-teal-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
-                        </svg>
-                    </div>
-                    <div>
-                        <p class="text-slate-200 font-medium" id="dropText">Drag and drop images here, or <span class="text-teal-400 underline">browse</span></p>
-                        <p class="text-xs text-slate-400 mt-1" id="dropSub">Supports PNG, JPG, WEBP, GIF, BMP, AVIF</p>
-                    </div>
+        <!-- Converter Tool Box -->
+        <div class="bg-slate-800 border border-slate-700 rounded-2xl p-6 md:p-8 shadow-xl text-center mb-10">
+            <div class="border-2 border-dashed border-slate-600 rounded-xl p-8 hover:border-indigo-500 transition cursor-pointer bg-slate-900/50">
+                <p id="upload-text" class="text-slate-300 font-medium mb-2">Drag and drop images here, or browse</p>
+                <p id="support-text" class="text-xs text-slate-500">Supports PNG, JPG, WEBP, GIF, BMP, AVIF</p>
+            </div>
+        </div>
+
+        <!-- SEO 및 심사 통과용 풍부한 콘텐츠 영역 (Article / Guide) -->
+        <section class="bg-slate-800/60 border border-slate-700/60 rounded-xl p-6 md:p-8 mb-8 space-y-6">
+            <h3 id="guide-title" class="text-xl font-bold text-indigo-300">📖 Why Choose FastImgConvert?</h3>
+            <div class="grid md:grid-cols-3 gap-6 text-sm text-slate-300">
+                <div class="bg-slate-900/40 p-4 rounded-lg border border-slate-700/40">
+                    <h4 id="feature1-title" class="font-semibold text-white mb-2">🔒 100% Privacy & Security</h4>
+                    <p id="feature1-desc" class="text-slate-400">Your files never leave your device. All conversions are processed locally inside your browser.</p>
+                </div>
+                <div class="bg-slate-900/40 p-4 rounded-lg border border-slate-700/40">
+                    <h4 id="feature2-title" class="font-semibold text-white mb-2">⚡ Lightning Fast</h4>
+                    <p id="feature2-desc" class="text-slate-400">No waiting for uploads or downloads to a remote server. Get your converted images instantly.</p>
+                </div>
+                <div class="bg-slate-900/40 p-4 rounded-lg border border-slate-700/40">
+                    <h4 id="feature3-title" class="font-semibold text-white mb-2">🌍 Multiple Formats</h4>
+                    <p id="feature3-desc" class="text-slate-400">Seamlessly convert between PNG, JPG, WEBP, BMP, and AVIF formats with high quality retention.</p>
                 </div>
             </div>
 
-            <!-- Controls (Hidden initially) -->
-            <div id="controls" class="hidden mt-6 space-y-6">
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 bg-slate-900/60 p-4 rounded-xl border border-slate-700/40">
-                    <!-- Format Options -->
+            <div class="border-t border-slate-700/60 pt-6">
+                <h4 id="faq-main-title" class="font-bold text-white mb-3">💡 Frequently Asked Questions</h4>
+                <div class="space-y-3 text-sm text-slate-400">
                     <div>
-                        <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2" id="lblFormat">Target Format</label>
-                        <select id="formatSelect" class="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2 text-sm text-slate-200 focus:outline-none focus:border-teal-500">
-                            <option value="image/jpeg">JPG / JPEG</option>
-                            <option value="image/png">PNG</option>
-                            <option value="image/webp">WEBP</option>
-                        </select>
+                        <p id="faq-q1" class="font-medium text-slate-200">Q. Do I need to install any software?</p>
+                        <p id="faq-a1" class="text-slate-400">No installation required. It works directly in modern web browsers on desktop and mobile.</p>
                     </div>
-
-                    <!-- Quality Slider -->
                     <div>
-                        <div class="flex justify-between items-center mb-2">
-                            <label class="text-xs font-semibold text-slate-300 uppercase tracking-wider" id="lblQuality">Quality</label>
-                            <span id="qualityVal" class="text-xs font-mono text-teal-400 font-bold">85%</span>
-                        </div>
-                        <input type="range" id="qualityInput" min="10" max="100" value="85" class="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-teal-400">
+                        <p id="faq-q2" class="font-medium text-slate-200">Q. Is there any file size limit?</p>
+                        <p id="faq-a2" class="text-slate-400">Since it runs on your browser, it depends on your device's memory, but most standard web images convert instantly.</p>
                     </div>
                 </div>
+            </div>
+        </section>
 
-                <!-- Convert Button -->
-                <button id="convertBtn" class="w-full bg-gradient-to-r from-teal-500 to-blue-600 hover:from-teal-400 hover:to-blue-500 text-white font-bold py-3.5 px-6 rounded-xl shadow-lg transition-all transform active:scale-[0.99] flex items-center justify-center space-x-2">
-                    <span id="btnConvertText">Convert Images</span>
-                </button>
-            </div>
-
-            <!-- Results List -->
-            <div id="resultsList" class="mt-6 space-y-3"></div>
-        </div>
-
-        <!-- Features / SEO Text Section -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm text-slate-400">
-            <div class="bg-slate-800/30 p-5 rounded-xl border border-slate-800">
-                <h3 class="font-bold text-slate-200 mb-1" id="feat1Title">🔒 100% Private</h3>
-                <p id="feat1Desc">Processing happens locally in your browser. Your images never hit any server.</p>
-            </div>
-            <div class="bg-slate-800/30 p-5 rounded-xl border border-slate-800">
-                <h3 class="font-bold text-slate-200 mb-1" id="feat2Title">⚡ Ultra Fast</h3>
-                <p id="feat2Desc">Instant conversion powered by modern web standards. No waiting for uploads.</p>
-            </div>
-            <div class="bg-slate-800/30 p-5 rounded-xl border border-slate-800">
-                <h3 class="font-bold text-slate-200 mb-1" id="feat3Title">✨ Multiple Formats</h3>
-                <p id="feat3Desc">Easily convert between PNG, JPG, and WEBP with customizable compression levels.</p>
-            </div>
-        </div>
     </main>
 
     <!-- Footer -->
-    <footer class="border-t border-slate-800 bg-slate-900 py-6 text-center text-xs text-slate-400">
-        <p>© 2026 FastImgConvert. All rights reserved.</p>
+    <footer class="text-center py-6 text-xs text-slate-500 border-t border-slate-800 bg-slate-900">
+        &copy; 2026 FastImgConvert. All rights reserved.
     </footer>
 
-    <!-- Multilingual Script & Processing Logic -->
+    <!-- 다국어 텍스트 전환 스크립트 -->
     <script>
         const translations = {
             en: {
-                heroTitle: "Fast, Secure Image Converter & Compressor",
-                heroDesc: "Convert and resize your images directly in your browser. No files are uploaded to any server – 100% private and secure.",
-                dropText: "Drag and drop images here, or ",
-                browse: "browse",
-                dropSub: "Supports PNG, JPG, WEBP, GIF, BMP, AVIF",
-                lblFormat: "Target Format",
-                lblQuality: "Quality",
-                btnConvertText: "Convert Images",
-                feat1Title: "🔒 100% Private",
-                feat1Desc: "Processing happens locally in your browser. Your images never hit any server.",
-                feat2Title: "⚡ Ultra Fast",
-                feat2Desc: "Instant conversion powered by modern web standards. No waiting for uploads.",
-                feat3Title: "✨ Multiple Formats",
-                feat3Desc: "Easily convert between PNG, JPG, and WEBP with customizable compression levels.",
-                download: "Download",
-                badgePrivacy: "100% Free / Client-side"
+                heroHeading: "Fast, Secure Image Converter & Compressor",
+                heroDesc: "Convert and resize your images directly in your browser. No files are uploaded to any server — 100% private and secure.",
+                uploadText: "Drag and drop images here, or browse",
+                supportText: "Supports PNG, JPG, WEBP, GIF, BMP, AVIF",
+                guideTitle: "📖 Why Choose FastImgConvert?",
+                f1Title: "🔒 100% Privacy & Security",
+                f1Desc: "Your files never leave your device. All conversions are processed locally inside your browser.",
+                f2Title: "⚡ Lightning Fast",
+                f2Desc: "No waiting for uploads or downloads to a remote server. Get your converted images instantly.",
+                f3Title: "🌍 Multiple Formats",
+                f3Desc: "Seamlessly convert between PNG, JPG, WEBP, BMP, and AVIF formats with high quality retention.",
+                faqTitle: "💡 Frequently Asked Questions",
+                q1: "Q. Do I need to install any software?",
+                a1: "No installation required. It works directly in modern web browsers on desktop and mobile.",
+                q2: "Q. Is there any file size limit?",
+                a2: "Since it runs on your browser, it depends on your device's memory, but most standard web images convert instantly."
             },
             ko: {
-                heroTitle: "빠르고 안전한 이미지 변환 및 압축기",
-                heroDesc: "브라우저에서 직접 이미지를 변환하고 용량을 줄이세요. 서버로 파일이 전송되지 않아 100% 안전합니다.",
-                dropText: "이미지를 여기에 드래그하거나 ",
-                browse: "파일 선택",
-                dropSub: "PNG, JPG, WEBP, GIF, BMP, AVIF 지원",
-                lblFormat: "변환할 포맷",
-                lblQuality: "압축 품질",
-                btnConvertText: "이미지 변환하기",
-                feat1Title: "🔒 100% 개인정보 보호",
-                feat1Desc: "모든 작업이 브라우저 내부에서 진행됩니다. 이미지가 서버로 업로드되지 않습니다.",
-                feat2Title: "⚡ 초고속 처리",
-                feat2Desc: "최신 웹 기술을 사용해 업로드 대기 시간 없이 즉시 변환됩니다.",
-                feat3Title: "✨ 다양한 포맷 지원",
-                feat3Desc: "PNG, JPG, WEBP 간 자유로운 변환과 품질 조절을 지원합니다.",
-                download: "다운로드",
-                badgePrivacy: "100% 무료 / 기기 내 직접 처리"
+                heroHeading: "빠르고 안전한 이미지 변환 및 압축",
+                heroDesc: "브라우저에서 직접 이미지를 변환하고 크기를 조절하세요. 서버로 파일이 전혀 전송되지 않아 100% 안전합니다.",
+                uploadText: "이미지를 여기에 끌어다 놓거나 파일 찾기",
+                supportText: "지원 형식: PNG, JPG, WEBP, GIF, BMP, AVIF",
+                guideTitle: "📖 FastImgConvert를 선택해야 하는 이유",
+                f1Title: "🔒 100% 개인정보 보호",
+                f1Desc: "파일이 기기를 떠나지 않습니다. 모든 변환은 브라우저 안에서 안전하게 로컬 처리됩니다.",
+                f2Title: "⚡ 번개처럼 빠른 속도",
+                f2Desc: "서버에 업로드하고 기다릴 필요 없이 즉시 변환된 이미지를 확인하세요.",
+                f3Title: "🌍 다양한 포맷 지원",
+                f3Desc: "PNG, JPG, WEBP, BMP, AVIF 등 주요 이미지 포맷 간의 변환을 손쉽게 지원합니다.",
+                faqTitle: "💡 자주 묻는 질문",
+                q1: "Q. 프로그램을 따로 설치해야 하나요?",
+                a1: "별도의 설치 없이 PC와 모바일 브라우저에서 바로 이용하실 수 있습니다.",
+                q2: "Q. 파일 크기 제한이 있나요?",
+                a2: "브라우저 메모리 성능에 따라 다르지만, 일반적인 웹용 사진들은 모두 원활하게 변환됩니다."
             },
             ja: {
-                heroTitle: "高速で安全な画像変換・圧縮ツール",
-                heroDesc: "ブラウザ上で直接画像を変換・圧縮します。サーバーにファイルが送信されないため100%安全です。",
-                dropText: "画像をここにドラッグ＆ドロップ、または ",
-                browse: "ファイルを選択",
-                dropSub: "PNG, JPG, WEBP, GIF, BMP, AVIF に対応",
-                lblFormat: "変換フォーマット",
-                lblQuality: "画質",
-                btnConvertText: "画像を変換する",
-                feat1Title: "🔒 100% プライベート",
-                feat1Desc: "すべての処理はブラウザ内で行われます。画像がサーバーに送信されることはありません。",
-                feat2Title: "⚡ 超高速処理",
-                feat2Desc: "ウェブ標準技術により、アップロード時間なしで瞬時に変換されます。",
-                feat3Title: "✨ 多様なフォーマット",
-                feat3Desc: "PNG、JPG、WEBP間の相互変換と圧縮レベルの設定が可能です。",
-                download: "ダウンロード",
-                badgePrivacy: "100% 無料 / クライアントサイド処理"
+                heroHeading: "高速で安全な画像変換・圧縮ツール",
+                heroDesc: "ブラウザ上で直接画像を変換・リサイズできます。サーバーにファイルはアップロードされません。",
+                uploadText: "ここに画像をドラッグ＆ドロップ、またはファイルを選択",
+                supportText: "対応形式: PNG, JPG, WEBP, GIF, BMP, AVIF",
+                guideTitle: "📖 FastImgConvertを選ぶ理由",
+                f1Title: "🔒 100%プライバシー保護",
+                f1Desc: "ファイルがデバイス外に出ることはありません。すべてブラウザ内で処理されます。",
+                f2Title: "⚡ 超高速処理",
+                f2Desc: "サーバーへのアップロード待ち時間がなく、即座に変換できます。",
+                f3Title: "🌍 多様なフォーマット",
+                f3Desc: "PNG、JPG、WEBP、BMP、AVIFなど、さまざまな形式をスムーズに変換。",
+                faqTitle: "💡 よくある質問",
+                q1: "Q. ソフトウェアのインストールは必要ですか？",
+                a1: "インストール不要で、ブラウザから直接ご利用いただけます。",
+                q2: "Q. ファイルサイズの制限はありますか？",
+                a2: "ブラウザのメモリに依存しますが、通常の画像は問題なく変換できます。"
             },
             es: {
-                heroTitle: "Convertidor y Compresor de Imágenes Rápido y Seguro",
-                heroDesc: "Convierte y redimensiona tus imágenes directamente en tu navegador. 100% privado y seguro.",
-                dropText: "Arrastra y suelta imágenes aquí, o ",
-                browse: "buscar",
-                dropSub: "Soporta PNG, JPG, WEBP, GIF, BMP, AVIF",
-                lblFormat: "Formato de Destino",
-                lblQuality: "Calidad",
-                btnConvertText: "Convertir Imágenes",
-                feat1Title: "🔒 100% Privado",
-                feat1Desc: "El procesamiento es local en tu navegador. Tus imágenes nunca se suben a ningún servidor.",
-                feat2Title: "⚡ Ultra Rápido",
-                feat2Desc: "Conversión instantánea sin tiempos de espera de carga.",
-                feat3Title: "✨ Múltiples Formatos",
-                feat3Desc: "Convierte fácilmente entre PNG, JPG y WEBP con calidad personalizable.",
-                download: "Descargar",
-                badgePrivacy: "100% Gratis / Procesamiento Local"
+                heroHeading: "Convertidor y Compresor de Imágenes Rápido y Seguro",
+                heroDesc: "Convierte y cambia el tamaño de tus imágenes directamente en tu navegador. 100% privado.",
+                uploadText: "Arrastra y suelta imágenes aquí, o búscalas",
+                supportText: "Soporta PNG, JPG, WEBP, GIF, BMP, AVIF",
+                guideTitle: "📖 ¿Por qué elegir FastImgConvert?",
+                f1Title: "🔒 100% Privacidad y Seguridad",
+                f1Desc: "Tus archivos nunca salen de tu dispositivo. Todo se procesa en tu navegador.",
+                f2Title: "⚡ Súper Rápido",
+                f2Desc: "Sin esperas para subir o descargar desde un servidor remoto.",
+                f3Title: "🌍 Múltiples Formatos",
+                f3Desc: "Convierte fácilmente entre PNG, JPG, WEBP, BMP y AVIF.",
+                faqTitle: "💡 Preguntas Frecuentes",
+                q1: "Q. ¿Necesito instalar algún software?",
+                a1: "No se requiere instalación. Funciona directamente en tu navegador.",
+                q2: "Q. ¿Hay límite de tamaño de archivo?",
+                a2: "Depende de la memoria de tu navegador, pero la mayoría de las imágenes se convierten al instante."
             }
         };
 
-        let loadedFiles = [];
-        const dropZone = document.getElementById('dropZone');
-        const fileInput = document.getElementById('fileInput');
-        const controls = document.getElementById('controls');
-        const convertBtn = document.getElementById('convertBtn');
-        const resultsList = document.getElementById('resultsList');
-        const langSelect = document.getElementById('langSelect');
-        const qualityInput = document.getElementById('qualityInput');
-        const qualityVal = document.getElementById('qualityVal');
-
-        // Quality Display Update
-        qualityInput.addEventListener('input', (e) => {
-            qualityVal.textContent = e.target.value + '%';
-        });
-
-        // Language Switcher
-        langSelect.addEventListener('change', (e) => {
-            const lang = e.target.value;
+        function changeLanguage(lang) {
             const t = translations[lang];
+            if (!t) return;
             
-            document.getElementById('heroTitle').textContent = t.heroTitle;
-            document.getElementById('heroDesc').textContent = t.heroDesc;
-            document.getElementById('dropText').childNodes[0].nodeValue = t.dropText;
-            document.getElementById('dropText').querySelector('span').textContent = t.browse;
-            document.getElementById('dropSub').textContent = t.dropSub;
-            document.getElementById('lblFormat').textContent = t.lblFormat;
-            document.getElementById('lblQuality').textContent = t.lblQuality;
-            document.getElementById('btnConvertText').textContent = t.btnConvertText;
-            document.getElementById('feat1Title').textContent = t.feat1Title;
-            document.getElementById('feat1Desc').textContent = t.feat1Desc;
-            document.getElementById('feat2Title').textContent = t.feat2Title;
-            document.getElementById('feat2Desc').textContent = t.feat2Desc;
-            document.getElementById('feat3Title').textContent = t.feat3Title;
-            document.getElementById('feat3Desc').textContent = t.feat3Desc;
-            document.getElementById('badgePrivacy').textContent = t.badgePrivacy;
-        });
-
-        // Drag & Drop Handlers
-        dropZone.addEventListener('click', () => fileInput.click());
-        dropZone.addEventListener('dragover', (e) => {
-            e.preventDefault();
-            dropZone.classList.add('border-teal-400', 'bg-slate-900/80');
-        });
-        dropZone.addEventListener('dragleave', () => {
-            dropZone.classList.remove('border-teal-400', 'bg-slate-900/80');
-        });
-        dropZone.addEventListener('drop', (e) => {
-            e.preventDefault();
-            dropZone.classList.remove('border-teal-400', 'bg-slate-900/80');
-            handleFiles(e.dataTransfer.files);
-        });
-        fileInput.addEventListener('change', (e) => handleFiles(e.target.files));
-
-        function handleFiles(files) {
-            if (files.length > 0) {
-                loadedFiles = Array.from(files);
-                controls.classList.remove('hidden');
-                resultsList.innerHTML = '';
-            }
+            document.getElementById('hero-heading').innerText = t.heroHeading;
+            document.getElementById('hero-desc').innerText = t.heroDesc;
+            document.getElementById('upload-text').innerText = t.uploadText;
+            document.getElementById('support-text').innerText = t.supportText;
+            document.getElementById('guide-title').innerText = t.guideTitle;
+            document.getElementById('feature1-title').innerText = t.f1Title;
+            document.getElementById('feature1-desc').innerText = t.f1Desc;
+            document.getElementById('feature2-title').innerText = t.f2Title;
+            document.getElementById('feature2-desc').innerText = t.f2Desc;
+            document.getElementById('feature3-title').innerText = t.f3Title;
+            document.getElementById('feature3-desc').innerText = t.f3Desc;
+            document.getElementById('faq-main-title').innerText = t.faqTitle;
+            document.getElementById('faq-q1').innerText = t.q1;
+            document.getElementById('faq-a1').innerText = t.a1;
+            document.getElementById('faq-q2').innerText = t.q2;
+            document.getElementById('faq-a2').innerText = t.a2;
+            
+            localStorage.setItem('selected_lang', lang);
         }
 
-        // Conversion Engine
-        convertBtn.addEventListener('click', async () => {
-            resultsList.innerHTML = '';
-            const targetFormat = document.getElementById('formatSelect').value;
-            const quality = parseFloat(qualityInput.value) / 100;
-            const currentLang = langSelect.value;
-            const downloadText = translations[currentLang].download;
-
-            for (let file of loadedFiles) {
-                const img = new Image();
-                img.src = URL.createObjectURL(file);
-                
-                await new Promise((resolve) => {
-                    img.onload = () => {
-                        const canvas = document.createElement('canvas');
-                        canvas.width = img.width;
-                        canvas.height = img.height;
-                        const ctx = canvas.getContext('2d');
-                        
-                        // Fill white background for non-transparent formats
-                        if (targetFormat === 'image/jpeg') {
-                            ctx.fillStyle = '#FFFFFF';
-                            ctx.fillRect(0, 0, canvas.width, canvas.height);
-                        }
-                        
-                        ctx.drawImage(img, 0, 0);
-
-                        canvas.toBlob((blob) => {
-                            const originalSize = (file.size / 1024).toFixed(1);
-                            const convertedSize = (blob.size / 1024).toFixed(1);
-                            const ext = targetFormat.split('/')[1];
-                            const newFilename = file.name.substring(0, file.name.lastIndexOf('.')) + '.' + ext;
-                            const downloadUrl = URL.createObjectURL(blob);
-
-                            const item = document.createElement('div');
-                            item.className = 'bg-slate-800/80 border border-slate-700/80 rounded-xl p-4 flex flex-col sm:flex-row items-center justify-between gap-4';
-                            item.innerHTML = `
-                                <div class="flex items-center space-x-3 w-full sm:w-auto overflow-hidden">
-                                    <div class="w-10 h-10 bg-slate-700 rounded-lg flex items-center justify-center font-bold text-xs uppercase text-teal-400 flex-shrink-0">
-                                        ${ext}
-                                    </div>
-                                    <div class="truncate">
-                                        <p class="text-sm font-medium text-slate-200 truncate">${newFilename}</p>
-                                        <p class="text-xs text-slate-400">${originalSize} KB → <span class="text-teal-400 font-bold">${convertedSize} KB</span></p>
-                                    </div>
-                                </div>
-                                <a href="${downloadUrl}" download="${newFilename}" class="w-full sm:w-auto bg-slate-700 hover:bg-teal-600 text-white text-xs font-bold py-2.5 px-4 rounded-lg text-center transition-colors">
-                                    ${downloadText}
-                                </a>
-                            `;
-                            resultsList.appendChild(item);
-                            resolve();
-                        }, targetFormat, quality);
-                    };
-                });
-            }
-        });
+        window.onload = () => {
+            const savedLang = localStorage.getItem('selected_lang') || 'en';
+            document.getElementById('lang-select').value = savedLang;
+            changeLanguage(savedLang);
+        };
     </script>
 </body>
 </html>
