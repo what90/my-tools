@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://my-tools-delta-ten.vercel.app/sitemap.xml
