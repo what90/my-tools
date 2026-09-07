@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Resize Image Online - Free Image Resizer | FastImgConvert</title>
+  <meta
+    name="description"
+    content="Resize JPG, PNG and WebP images online for free. Change image width and height directly in your browser without uploading your images to a server."
+  />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-slate-900 text-slate-100 min-h-screen flex flex-col font-sans">
+
+  <!-- Header -->
+  <header class="border-b border-slate-800 bg-slate-900/80 backdrop-blur sticky top-0 z-50">
+    <div class="max-w-5xl mx-auto px-4 py-4 flex justify-between items-center">
+      <a href="/" class="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-blue-500">
+        FastImgConvert
+      </a>
+
+      <nav class="hidden md:flex items-center gap-5 text-sm text-slate-300">
+        <a class="hover:text-teal-400" href="/">Converter</a>
+        <a class="hover:text-teal-400" href="/compress-image.html">Image Compressor</a>
+        <a class="text-teal-400 font-semibold" href="/resize-image.html">Image Resizer</a>
+        <a class="hover:text-teal-400" href="/image-formats.html">Format Guide</a>
+        <a class="hover:text-teal-400" href="/compression-guide.html">Compression Guide</a>
+        <a class="hover:text-teal-400" href="/about.html">About</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="max-w-4xl mx-auto px-4 py-10 flex-grow w-full">
+
+    <!-- Hero -->
+    <section class="text-center mb-8">
+      <h1 class="text-3xl sm:text-4xl font-extrabold mb-3">
+        Free Online Image Resizer
+      </h1>
+
+      <p class="text-slate-400 max-w-2xl mx-auto">
+        Resize JPG, PNG and WebP images directly in your browser.
+        Your images stay on your device and are not intentionally uploaded
+        to an image-processing server.
+      </p>
+    </section>
+
+    <!-- Tool -->
+    <section class="bg-slate-800/50 border border-slate-700 rounded-2xl p-6 sm:p-8 shadow-xl">
+
+      <!-- Drop Zone -->
+      <div
+        id="dropZone"
+        class="border-2 border-dashed border-slate-600 hover:border-teal-400 rounded-xl p-10 text-center cursor-pointer transition"
+      >
+        <input
+          id="fileInput"
+          type="file"
+          accept="image/jpeg,image/png,image/webp"
+          class="hidden"
+        />
+
+        <div class="text-4xl mb-4">⇧</div>
+
+        <p class="text-lg">
+          Drag and drop an image here, or
+          <span class="text-teal-400 underline">browse</span>
+        </p>
+
+        <p class="text-sm text-slate-400 mt-2">
+          Supports JPG, PNG and WebP
+        </p>
+      </div>
+
+      <!-- Controls -->
+      <div id="controls" class="hidden mt-6 space-y-5">
+
+        <div class="bg-slate-900/60 rounded-xl p-5 border border-slate-700">
+          <p id="fileName" class="font-semibold break-all"></p>
+          <p id="originalSize" class="text-sm text-slate-400 mt-1"></p>
+        </div>
+
+        <div class="grid sm:grid-cols-2 gap-4">
+
+          <div>
+            <label class="block text-sm font-bold mb-2" for="widthInput">
+              Width (px)
+            </label>
+            <input
+              id="widthInput"
+              type="number"
+              min="1"
+              class="w-full bg-slate-900 border border-slate-600 rounded-lg px-4 py-3 outline-none focus:border-teal-400"
+            />
+          </div>
+
+          <div>
+            <label class="block text-sm font-bold mb-2" for="heightInput">
+              Height (px)
+            </label>
+            <input
+              id="heightInput"
+              type="number"
+              min="1"
+              class="w-full bg-slate-900 border border-slate-600 rounded-lg px-4 py-3 outline-none focus:border-teal-400"
+            />
+          </div>
+
+        </div>
+
+        <label class="flex items-center gap-3 cursor-pointer">
+          <input
+            id="lockRatio"
+            type="checkbox"
+            checked
+            class="w-5 h-5 accent-teal-400"
+          />
+          <span>Keep original aspect ratio</span>
+        </label>
+
+        <button
+          id="resizeButton"
+          class="w-full py-4 rounded-xl font-bold text-lg bg-gradient-to-r from-teal-500 to-blue-600 hover:opacity-90 transition"
+        >
+          Resize Image
+        </button>
+      </div>
+
+      <!-- Result -->
+      <div id="result" class="hidden mt-6 bg-slate-900/60 border border-slate-700 rounded-xl p-5">
+
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+
+          <div>
+            <p class="font-semibold">Resized image ready</p>
+            <p id="resultDimensions" class="text-sm text-teal-400 mt-1"></p>
+            <p id="resultSize" class="text-sm text-slate-400 mt-1"></p>
+          </div>
+
+          <a
+            id="downloadButton"
+            class="inline-block text-center bg-slate-700 hover:bg-slate-600 px-6 py-3 rounded-lg font-bold cursor-pointer"
+          >
+            Download
+          </a>
+
+        </div>
+      </div>
+
+    </section>
+
+    <!-- Content -->
+    <section class="mt-12 space-y-10 text-slate-300 leading-7">
+
+      <div>
+        <h2 class="text-2xl font-bold text-white mb-3">
+          How to resize an image
+        </h2>
+        <p>
+          Select a JPG, PNG or WebP image, enter the width or height you need,
+          and keep the aspect ratio option enabled if you want to avoid
+          stretching the image. Then click Resize Image and download the result.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-2xl font-bold text-white mb-3">
+          What does aspect ratio mean?
+        </h2>
+        <p>
+          Aspect ratio describes the relationship between an image's width
+          and height. Keeping the original aspect ratio prevents the image
+          from looking stretched or compressed.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-2xl font-bold text-white mb-3">
+          Does resizing reduce file size?
+        </h2>
+        <p>
+          Often yes. Reducing the pixel dimensions of an image usually reduces
+          the amount of image data and can make the resulting file smaller.
+          The exact result depends on the image format and image content.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-2xl font-bold text-white mb-3">
+          Are my images uploaded?
+        </h2>
+        <p>
+          Image resizing is performed in your browser using the HTML canvas.
+          The tool does not intentionally send your image to an
+          image-processing server.
+        </p>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-800 bg-slate-900 py-8 text-center text-xs text-slate-400">
+    <div class="max-w-5xl mx-auto px-4">
+
+      <div class="flex flex-wrap justify-center gap-4 mb-4">
+        <a class="hover:text-teal-400" href="/">Converter</a>
+        <a class="hover:text-teal-400" href="/compress-image.html">Image Compressor</a>
+        <a class="hover:text-teal-400" href="/resize-image.html">Image Resizer</a>
+        <a class="hover:text-teal-400" href="/image-formats.html">Image Format Guide</a>
+        <a class="hover:text-teal-400" href="/compression-guide.html">Compression Guide</a>
+        <a class="hover:text-teal-400" href="/about.html">About</a>
+        <a class="hover:text-teal-400" href="/privacy.html">Privacy</a>
+        <a class="hover:text-teal-400" href="/terms.html">Terms</a>
+      </div>
+
+      <p>© 2026 FastImgConvert. All rights reserved.</p>
+
+    </div>
+  </footer>
+
+  <script>
+    const fileInput = document.getElementById("fileInput");
+    const dropZone = document.getElementById("dropZone");
+    const controls = document.getElementById("controls");
+
+    const fileName = document.getElementById("fileName");
+    const originalSize = document.getElementById("originalSize");
+
+    const widthInput = document.getElementById("widthInput");
+    const heightInput = document.getElementById("heightInput");
+    const lockRatio = document.getElementById("lockRatio");
+
+    const resizeButton = document.getElementById("resizeButton");
+
+    const result = document.getElementById("result");
+    const resultDimensions = document.getElementById("resultDimensions");
+    const resultSize = document.getElementById("resultSize");
+    const downloadButton = document.getElementById("downloadButton");
+
+    let selectedFile = null;
+    let originalWidth = 0;
+    let originalHeight = 0;
+    let aspectRatio = 1;
+
+    dropZone.addEventListener("click", () => {
+      fileInput.click();
+    });
+
+    fileInput.addEventListener("change", () => {
+      if (fileInput.files.length > 0) {
+        loadImage(fileInput.files[0]);
+      }
+    });
+
+    dropZone.addEventListener("dragover", (event) => {
+      event.preventDefault();
+      dropZone.classList.add("border-teal-400");
+    });
+
+    dropZone.addEventListener("dragleave", () => {
+      dropZone.classList.remove("border-teal-400");
+    });
+
+    dropZone.addEventListener("drop", (event) => {
+      event.preventDefault();
+      dropZone.classList.remove("border-teal-400");
+
+      const file = event.dataTransfer.files[0];
+
+      if (file) {
+        loadImage(file);
+      }
+    });
+
+    function loadImage(file) {
+      if (!["image/jpeg", "image/png", "image/webp"].includes(file.type)) {
+        alert("Please select a JPG, PNG or WebP image.");
+        return;
+      }
+
+      selectedFile = file;
+
+      const image = new Image();
+      const objectUrl = URL.createObjectURL(file);
+
+      image.onload = () => {
+        originalWidth = image.naturalWidth;
+        originalHeight = image.naturalHeight;
+        aspectRatio = originalWidth / originalHeight;
+
+        widthInput.value = originalWidth;
+        heightInput.value = originalHeight;
+
+        fileName.textContent = file.name;
+        originalSize.textContent =
+          `${originalWidth} × ${originalHeight} px · ${formatBytes(file.size)}`;
+
+        controls.classList.remove("hidden");
+        result.classList.add("hidden");
+
+        URL.revokeObjectURL(objectUrl);
+      };
+
+      image.onerror = () => {
+        URL.revokeObjectURL(objectUrl);
+        alert("This image could not be opened.");
+      };
+
+      image.src = objectUrl;
+    }
+
+    widthInput.addEventListener("input", () => {
+      if (!lockRatio.checked) return;
+
+      const width = parseInt(widthInput.value);
+
+      if (width > 0) {
+        heightInput.value = Math.round(width / aspectRatio);
+      }
+    });
+
+    heightInput.addEventListener("input", () => {
+      if (!lockRatio.checked) return;
+
+      const height = parseInt(heightInput.value);
+
+      if (height > 0) {
+        widthInput.value = Math.round(height * aspectRatio);
+      }
+    });
+
+    resizeButton.addEventListener("click", () => {
+      if (!selectedFile) return;
+
+      const newWidth = parseInt(widthInput.value);
+      const newHeight = parseInt(heightInput.value);
+
+      if (!newWidth || !newHeight || newWidth < 1 || newHeight < 1) {
+        alert("Please enter a valid width and height.");
+        return;
+      }
+
+      if (newWidth > 12000 || newHeight > 12000) {
+        alert("Please use dimensions smaller than 12,000 pixels.");
+        return;
+      }
+
+      const image = new Image();
+      const objectUrl = URL.createObjectURL(selectedFile);
+
+      image.onload = () => {
+        const canvas = document.createElement("canvas");
+
+        canvas.width = newWidth;
+        canvas.height = newHeight;
+
+        const context = canvas.getContext("2d");
+
+        context.imageSmoothingEnabled = true;
+        context.imageSmoothingQuality = "high";
+
+        context.drawImage(image, 0, 0, newWidth, newHeight);
+
+        const outputType = selectedFile.type;
+
+        canvas.toBlob(
+          (blob) => {
+            URL.revokeObjectURL(objectUrl);
+
+            if (!blob) {
+              alert("The image could not be resized.");
+              return;
+            }
+
+            const downloadUrl = URL.createObjectURL(blob);
+
+            const extension =
+              outputType === "image/png"
+                ? "png"
+                : outputType === "image/webp"
+                ? "webp"
+                : "jpg";
+
+            const baseName = selectedFile.name.replace(/\.[^/.]+$/, "");
+
+            downloadButton.href = downloadUrl;
+            downloadButton.download =
+              `${baseName}-${newWidth}x${newHeight}.${extension}`;
+
+            resultDimensions.textContent =
+              `${originalWidth} × ${originalHeight} px → ${newWidth} × ${newHeight} px`;
+
+            resultSize.textContent =
+              `${formatBytes(selectedFile.size)} → ${formatBytes(blob.size)}`;
+
+            result.classList.remove("hidden");
+          },
+          outputType,
+          0.92
+        );
+      };
+
+      image.onerror = () => {
+        URL.revokeObjectURL(objectUrl);
+        alert("The image could not be processed.");
+      };
+
+      image.src = objectUrl;
+    });
+
+    function formatBytes(bytes) {
+      if (bytes < 1024) return `${bytes} B`;
+
+      if (bytes < 1024 * 1024) {
+        return `${(bytes / 1024).toFixed(1)} KB`;
+      }
+
+      return `${(bytes / (1024 * 1024)).toFixed(2)} MB`;
+    }
+  </script>
+
+</body>
+</html>
