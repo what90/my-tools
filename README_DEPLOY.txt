@@ -1,22 +1,85 @@
-FASTIMGCONVERT - ADSENSE REWORK
+﻿FastImgConvert 수정본 — 2026년 9월 13일
 
-Files included:
-- index.html: original converter preserved, with substantial explanatory content and navigation added
-- image-formats.html: original format-selection guide
-- compression-guide.html: original compression guide
-- about.html
-- privacy.html
-- terms.html
-- ads.txt
-- robots.txt
-- sitemap.xml
+이 ZIP에는 기존 사이트를 교체할 HTML 파일과 assets 폴더가 들어 있습니다.
+대상 주소: https://my-tools-delta-ten.vercel.app/
+실제 Vercel 배포와 애드센스 재심사는 아직 진행하지 않았습니다.
 
-Deployment:
-Upload/deploy ALL files at the website root so index.html and ads.txt are both at the root.
-After deployment verify:
-1) https://my-tools-delta-ten.vercel.app/
-2) https://my-tools-delta-ten.vercel.app/ads.txt
-3) https://my-tools-delta-ten.vercel.app/privacy.html
-4) https://my-tools-delta-ten.vercel.app/image-formats.html
+1. Windows에서 파일 준비
 
-Do not request AdSense review until the deployed pages are accessible and ads.txt is visible.
+① 기존 FastImgConvert_DEV 폴더를 복사해 백업해 두세요.
+② 내려받은 FastImgConvert_updated.zip을 마우스 오른쪽 버튼으로 클릭하세요.
+③ ‘압축 풀기’ 또는 ‘모두 추출’을 눌러 새 폴더에 풀어 주세요.
+④ 풀린 폴더에서 index.html과 assets 폴더가 함께 보이는지 확인하세요.
+⑤ 기존 Vercel 프로젝트의 배포 원본 폴더에 이 파일들과 assets 폴더 전체를 반영하세요.
+   GitHub로 연결한 프로젝트라면 해당 저장소의 기존 웹사이트 파일을 교체한 뒤 배포합니다.
+   기존에 다른 방법으로 배포했다면 그 방법으로 같은 프로젝트를 업데이트합니다.
+   배포 방법이 기억나지 않으면 Vercel의 해당 프로젝트 화면을 보여 주세요.
+
+assets 폴더가 반드시 함께 필요합니다. HTML만 복사하면 디자인과 기능이 작동하지 않습니다.
+파일은 사이트 루트에 있어야 합니다. index.html과 ads.txt가 하위 폴더에 들어가지 않도록 하세요.
+별도 빌드나 npm 설치가 필요 없는 정적 웹사이트입니다.
+PC에서 index.html을 두 번 클릭해 여는 방식은 절대 경로와 샘플 불러오기를 제대로 확인하기 어렵습니다.
+기능 확인은 배포 주소 또는 로컬 HTTP 서버에서 진행하세요.
+
+2. 수정한 내용
+
+- 변환기, 압축기, 크기 변경기의 파일 선택·변환·다운로드 흐름 정리
+- 손상 파일, 지원하지 않는 형식, 용량·픽셀 제한 초과에 대한 오류 안내
+- JPG의 투명 배경은 흰색으로 처리, PNG와 WebP의 투명도 유지
+- PNG에서는 적용되지 않는 품질 조절을 비활성화하고 이유 안내
+- 출력이 더 커진 경우에도 실제 크기 차이를 표시하고 원본 다운로드 제공
+- 변환 전후 미리보기, 크기와 용량 비교, 반복 실행과 초기화 보완
+- 영어·한국어·일본어·스페인어 도구 사용법과 FAQ, 결과·오류 안내
+- 변환 후 언어를 바꾸어도 기존 결과 안내가 함께 변경되도록 수정
+- 모바일에서도 변환·압축·크기 변경 메뉴 표시
+- 외부 Tailwind 런타임 대신 포함된 CSS 사용
+- 실제 원본·변환 이미지, 품질 40/80/95와 크기 변경의 정확한 바이트 수 비교 페이지 추가
+- 포맷 선택·압축 가이드, 소개, 개인정보 안내, 사이트맵 보완
+- 기존 애드센스 게시자 번호, 사이트 확인 코드와 ads.txt 유지
+
+상세 가이드와 비교 글은 영어입니다. 도구 화면에는 가이드가 영어임을 표시했습니다.
+예시 이미지는 이 비교를 위해 만든 테스트 차트와 투명 배지입니다.
+사진 촬영 사례나 모든 이미지의 일반적인 압축률로 소개하지 않았습니다.
+참조 변환 결과는 2026년 9월 12일 실제 브라우저 변환으로 만들었습니다.
+
+3. 확인한 범위
+
+2026년 9월 13일, Chromium 153.0.8010.0의 로컬 HTTP 환경에서 확인했습니다.
+- JPG·PNG·WebP 출력 형식, 투명 배경 처리 및 실제 파일 다운로드
+- 손상 파일 다음의 정상 파일 처리, 파일명 표시, 입력 크기와 배치 제한
+- 압축 결과가 커지는 경우와 원본 다운로드
+- 비율 유지 크기 변경, 비율 해제, 잘못된 크기 입력과 손상 파일 교체
+- 네 언어의 안내, 변환 후 언어 변경, 샘플, 반복 변환, 초기화
+- 10개 페이지의 화면 너비 360·390·768·1366px에서 가로 넘침 여부
+- 내부 메뉴·예제 파일 링크와 한국어 결과 화면
+- 검사한 흐름에서 처리되지 않은 JavaScript 오류 없음
+
+총 14개 검사 묶음을 통과했습니다. 다른 브라우저와 실제 광고 게재는 검사하지 않았습니다.
+화면 검사 환경에 한국어 시스템 글꼴이 없어 검사 페이지에만 한국어 글꼴을 공급했습니다.
+사이트는 이용자 기기의 시스템 글꼴을 사용합니다.
+
+4. 배포 후 직접 확인할 페이지
+
+홈 / 변환기: https://my-tools-delta-ten.vercel.app/
+압축기: https://my-tools-delta-ten.vercel.app/compress-image.html
+크기 변경기: https://my-tools-delta-ten.vercel.app/resize-image.html
+실측 예시: https://my-tools-delta-ten.vercel.app/image-examples.html
+형식 가이드: https://my-tools-delta-ten.vercel.app/image-formats.html
+압축 가이드: https://my-tools-delta-ten.vercel.app/compression-guide.html
+광고 설정 파일: https://my-tools-delta-ten.vercel.app/ads.txt
+
+홈의 샘플 버튼을 누르고 변환한 뒤 결과 파일을 내려받아 보세요.
+크기 변경기에서는 샘플의 너비를 600으로 바꾸면 높이가 400이 되는지 확인하세요.
+Examples 페이지의 표에서 원본과 JPG 파일이 실제로 다운로드되는지 확인하세요.
+배포가 끝났는데 예전 화면이 보이면 Ctrl+F5로 새로고침해 보세요.
+
+5. 애드센스 검토
+
+제시된 거절 화면에서 확인할 수 있는 사유는 ‘가치가 별로 없는 콘텐츠’입니다.
+Google이 어떤 개별 페이지나 요소 때문에 거절했는지까지는 그 화면으로 알 수 없습니다.
+이번 수정은 기능의 정확성과 사용자가 직접 확인할 수 있는 고유한 비교 자료를 보강한 것입니다.
+애드센스 승인을 보장하는 파일은 아닙니다.
+배포된 사이트의 새 내용과 기능을 확인한 다음 재검토 요청을 진행하세요.
+
+참고: Google 애드센스 사이트 준비 가이드
+https://support.google.com/adsense/answer/7299563?hl=ko

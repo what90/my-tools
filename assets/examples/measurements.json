@@ -1,0 +1,108 @@
+{
+  "date": "2026-09-12",
+  "encoder": "Chromium 153.0.8010.0 · FastImgConvert image-engine.js · canvas.toBlob",
+  "sources": [
+    {
+      "filename": "test-chart.png",
+      "width": 1200,
+      "height": 800,
+      "bytes": 189373
+    },
+    {
+      "filename": "transparent-badge.png",
+      "width": 800,
+      "height": 800,
+      "bytes": 59925
+    }
+  ],
+  "outputs": [
+    {
+      "source": "test-chart.png",
+      "filename": "chart-jpg-q40.jpg",
+      "label": "JPG quality 40",
+      "sourceBytes": 189373,
+      "bytes": 63575,
+      "width": 1200,
+      "height": 800,
+      "quality": 0.4,
+      "type": "image/jpeg"
+    },
+    {
+      "source": "test-chart.png",
+      "filename": "chart-jpg-q80.jpg",
+      "label": "JPG quality 80",
+      "sourceBytes": 189373,
+      "bytes": 115436,
+      "width": 1200,
+      "height": 800,
+      "quality": 0.8,
+      "type": "image/jpeg"
+    },
+    {
+      "source": "test-chart.png",
+      "filename": "chart-jpg-q95.jpg",
+      "label": "JPG quality 95",
+      "sourceBytes": 189373,
+      "bytes": 217523,
+      "width": 1200,
+      "height": 800,
+      "quality": 0.95,
+      "type": "image/jpeg"
+    },
+    {
+      "source": "test-chart.png",
+      "filename": "chart-webp-q80.webp",
+      "label": "WebP quality 80",
+      "sourceBytes": 189373,
+      "bytes": 78652,
+      "width": 1200,
+      "height": 800,
+      "quality": 0.8,
+      "type": "image/webp"
+    },
+    {
+      "source": "test-chart.png",
+      "filename": "chart-png.png",
+      "label": "PNG re-encoded",
+      "sourceBytes": 189373,
+      "bytes": 222384,
+      "width": 1200,
+      "height": 800,
+      "quality": null,
+      "type": "image/png"
+    },
+    {
+      "source": "test-chart.png",
+      "filename": "chart-600x400-jpg-q80.jpg",
+      "label": "JPG quality 80 · 600 × 400",
+      "sourceBytes": 189373,
+      "bytes": 39435,
+      "width": 600,
+      "height": 400,
+      "quality": 0.8,
+      "type": "image/jpeg"
+    },
+    {
+      "source": "transparent-badge.png",
+      "filename": "badge-jpg-q80.jpg",
+      "label": "JPG quality 80 · white background",
+      "sourceBytes": 59925,
+      "bytes": 25643,
+      "width": 800,
+      "height": 800,
+      "quality": 0.8,
+      "type": "image/jpeg"
+    },
+    {
+      "source": "transparent-badge.png",
+      "filename": "badge-webp-q80.webp",
+      "label": "WebP quality 80 · transparency",
+      "sourceBytes": 59925,
+      "bytes": 28190,
+      "width": 800,
+      "height": 800,
+      "quality": 0.8,
+      "type": "image/webp"
+    }
+  ]
+}
